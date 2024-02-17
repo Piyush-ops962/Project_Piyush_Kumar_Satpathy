@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <title>Video Card with Like Image</title>
+  <style>
+    /* CSS styles here */
+    .video-card {
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+
+    .video-container {
+      position: relative;
+    }
+
+
+    .video-container iframe {
+      width: 100%;
+      height: auto;
+    }
+
+
+    .content {
+      padding: 10px;
+      position: relative;
+    }
+
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .like-button {
+            background-color: #73b7c0;
+            border: none;
+            color: rgb(242, 247, 234);
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transform: translateX(150%);
+        }
+
+    .like-image {
+      width: 30px;
+      height: auto;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+    }
+    .liked {
+    background-color: #0a0e0b;
+}
+/* .liked:hover {
+    background-color: #1da138;
+} */
+
+
+    .like-dialog {
+      display: none;
+      position: absolute;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="video-card">
+    <div class="video-container">
+      <!-- Embed your video here -->
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/jCD1JkDp_BQ?si=TW12TuNk8eVRK_9n" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="content">
+      <h2>Bosscoder Academy</h2>
+      <div class="like-dialog">I like this</div>
+      <!-- thumbs-up image -->
+      <!-- <img class="like-image" src="like.png" alt="Thumbs Up"> -->
+      <button id="like-button" class="like-button">Like</button>
+    </div>
+  </div>
+
+
+  <script>
+    // JavaScript code here
+    const likeImages = document.querySelectorAll('.like-button');
+
+
+    likeImages.forEach((likeImage) => {
+      const likeDialog = likeImage.previousElementSibling;
+
+
+      likeImage.addEventListener('mouseover', () => {
+        likeDialog.style.display = 'block';
+      });
+
+
+      likeImage.addEventListener('mouseout', () => {
+        likeDialog.style.display = 'none';
+      });
+    });
+    const likeButton = document.getElementById('like-button');
+        let buttonClicks = 0;
+
+        likeButton.addEventListener('click', () => {
+            buttonClicks++;
+            if (buttonClicks % 2 === 0) {
+                likeButton.classList.remove('liked');
+            } else {
+                likeButton.classList.add('liked');
+            }
+        });
+  </script>
+</body>
+
+
+</html>
